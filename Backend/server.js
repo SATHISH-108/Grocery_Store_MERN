@@ -25,7 +25,7 @@ await connectCloudinary();
 //   cors({
 //     origin: [
 //       "http://localhost:5173",
-//       "https://grocery-store-backend-kappa.vercel.app",
+//       "https://grocery-store-sepia-eight.vercel.app/",
 //     ],
 //     credentials: true,
 //   }),
@@ -33,7 +33,7 @@ await connectCloudinary();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://grocery-store-backend-kappa.vercel.app",
+  "https://grocery-store-sepia-eight.vercel.app/",
 ];
 
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
