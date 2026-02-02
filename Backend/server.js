@@ -21,27 +21,27 @@ const PORT = process.env.PORT || 7002;
 await DBConnection(); //Calling the Database
 await connectCloudinary();
 //Allow multiple origins
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://grocery-store-backend-kappa.vercel.app",
-    ],
-    credentials: true,
-  }),
-); // allows you to connect Frontend to Backend
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://grocery-store-backend-kappa.vercel.app",
+//     ],
+//     credentials: true,
+//   }),
+// ); // allows you to connect Frontend to Backend
 
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "https://grocery-store-backend-kappa.vercel.app",
-// ];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://grocery-store-backend-kappa.vercel.app",
+];
 
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 
 // Middleware Configuration
 app.use(express.json()); // pasre request bodies // helps to access request.body
 app.use(cookieParser());
-// app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 //API End Points (Testing Routes)
 app.get("/", async (request, response) => {
